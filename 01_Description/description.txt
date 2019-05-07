@@ -1,0 +1,1 @@
+This stack will create a S3 bucket that can be used as a network storage with object versioning to prevent any accidental data lose.

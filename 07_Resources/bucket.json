@@ -1,0 +1,18 @@
+{
+	"S3Drive": {
+		"Type": "AWS::S3::Bucket",
+		"Properties": {
+			"BucketName": { "Fn::Sub": "${DataRestingPlace}" },
+			"VersioningConfiguration": {
+				"Status": "yes"
+			},
+			"LifecycleConfiguration": {
+				"Rules": [{
+					"Id": "30days",
+					"NoncurrentVersionExpirationInDays": 30,
+					"Status": "Enabled"
+				}]
+			}
+		}
+	}
+}

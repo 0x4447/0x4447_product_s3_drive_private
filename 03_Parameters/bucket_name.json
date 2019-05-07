@@ -1,0 +1,6 @@
+{
+	"DataRestingPlace": {
+		"Description": "The S3 bucket name where you want to store your data.",
+		"Type": "String"
+	}
+}
