@@ -14,6 +14,12 @@
 				"BucketName": {
 					"Fn::Sub": "${DataRestingPlace}"
 				},
+				"PublicAccessBlockConfiguration": {
+					"BlockPublicAcls": true,
+					"BlockPublicPolicy": true,
+					"IgnorePublicAcls": true,
+					"RestrictPublicBuckets": true
+				},
 				"VersioningConfiguration": {
 					"Status": "Enabled"
 				},
