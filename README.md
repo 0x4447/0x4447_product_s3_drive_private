@@ -1,6 +1,30 @@
-# 0x4447-product-s3-drive
+# 💾 0x4447 S3 Private Drive
 
-A stack to create a basic network drive using S3, while enabling all the useful features to make the experience complete.
+This stack was created just speed up the process of creating a S3 bucket as a network storage with visioning configured, and a 30 day window to recover the deleted or older versions of the file. Since this is something we do over and over for our clients, we decided to describe the configuration once, and just within minutes be on our way.
+
+The stack will also create a special IAM Group with a in-line policy that gives any user that is attach to this group the correct rights to interact with the S3 objects. This policy takes in account the enabled versioning, to make it all work.
+
+# DISCLAIMER!
+
+This stack is available to anyone at no cost, but on an as-is basis. 0x4447 LLC is not responsible for damages or costs of any kind that may occur when you use the stack. You take full responsibility when you use it.
+
+# How to deploy
+
+<a target="_blank" href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=zer0x4447-S3-Drive-Private&templateURL=https://s3.amazonaws.com/0x4447-drive-cloudformation/s3-drive-private.json">
+<img align="left" style="float: left; margin: 0 10px 0 0;" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"></a>
+
+All you need to do to deploy this stack is click the button to the left and follow the instructions that CloudFormation provides in your AWS Dashboard. Alternatively you can download the CF file from [here](https://s3.amazonaws.com/0x4447-drive-cloudformation/s3-email.json).
+
+# What will deploy?
+
+The stack takes advantage of AWS S3 and AWS IAM Groups. You'll get:
+
+- 1x S3 Bucket
+- 1x IAM Group
+
+# Manual work
+
+After the stack is deployed the only thing left is to create a IAM user or use a pre-existing one and attach to this user the IAM Group that was created with the bare minimum actions needed to work with the bucket.
 
 # How to work with this project
 
