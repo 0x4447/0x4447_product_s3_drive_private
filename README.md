@@ -13,7 +13,7 @@ This stack is available to anyone at no cost, but on an as-is basis. 0x4447 LLC 
 <a target="_blank" href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=zer0x4447-S3-Drive-Private&templateURL=https://s3.amazonaws.com/0x4447-drive-cloudformation/s3-drive-private.json">
 <img align="left" style="float: left; margin: 0 10px 0 0;" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"></a>
 
-All you need to do to deploy this stack is click the button to the left and follow the instructions that CloudFormation provides in your AWS Dashboard. Alternatively you can download the CF file from [here](https://s3.amazonaws.com/0x4447-drive-cloudformation/s3-email.json).
+All you need to do to deploy this stack is click the button to the left and follow the instructions that CloudFormation provides in your AWS Dashboard. Alternatively you can download the CF file from [here](https://s3.amazonaws.com/0x4447-drive-cloudformation/s3-drive-private.json).
 
 # What will deploy?
 
