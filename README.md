@@ -26,6 +26,20 @@ The stack takes advantage of AWS S3 and AWS IAM Groups. You'll get:
 
 After the stack is deployed the only thing left is to create a IAM user or use a pre-existing one and attach to this user the IAM Group that was created with the bare minimum actions needed to work with the bucket.
 
+# How to recover deleted files in S3
+
+When you have S3 versioning enabled there is no UI in the AWS Dashboard that can help you recover all the files at once – you can only recover individual files. To recover everything that was delete the command line bellow is going to recover those files for you.
+
+```
+AWS_ACCESS_KEY_ID=KEY \
+AWS_SECRET_ACCESS_KEY=SECRET \
+aws s3api list-object-versions --bucket BUCKET_NAME --output text | \
+grep -E "^DELETEMARKERS" | \
+awk '{FS = "[\t]+"; print "aws s3api delete-object --bucket BUCKET_NAME --key \42"$3"\42 --version-id "$5";"}' >> undelete_script.sh
+```
+
+Once the CLI finishes working, you'll end up with the `undelete_script.sh` file, which will contain in each line a separated action to remove the `delete` flag from the S3 object. Make sure to review this file, and then set the it to be executable `chmod +x undelete_script.sh`.
+
 # How to work with this project
 
 When you want to deploy the stack, the only file you should be interested in is the `CloudFormation.json` file. If you'd like to modify the stack, we recommend that you use the [Grapes framework](https://github.com/0x4447/0x4447-cli-node-grapes), which was designed to make it easier to work with the CloudFormation file. If you'd like to keep your sanity, never edit the main CF file 🤪.
