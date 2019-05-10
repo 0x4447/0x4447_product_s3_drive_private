@@ -1,0 +1,88 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "This stack will create a S3 bucket that can be used as a network storage with object versioning to prevent any accidental data lose.",
+	"Parameters": {
+		"DataRestingPlace": {
+			"Description": "The S3 bucket name where you want to store your data.",
+			"Type": "String"
+		}
+	},
+	"Resources": {
+		"S3DrivePrivate": {
+			"Type": "AWS::S3::Bucket",
+			"Properties": {
+				"BucketName": {
+					"Fn::Sub": "${DataRestingPlace}"
+				},
+				"VersioningConfiguration": {
+					"Status": "Enabled"
+				},
+				"LifecycleConfiguration": {
+					"Rules": [
+						{
+							"Id": "30days",
+							"NoncurrentVersionExpirationInDays": 30,
+							"Status": "Enabled"
+						}
+					]
+				},
+				"Tags": [
+					{
+						"Key": "Name",
+						"Value": "S3 Drive Private"
+					},
+					{
+						"Key": "Source",
+						"Value": "0x4447 LLC"
+					},
+					{
+						"Key": "Info",
+						"Value": "https://0x4447.com"
+					}
+				]
+			}
+		},
+		"IAMGroup": {
+			"Type": "AWS::IAM::Group",
+			"Properties": {
+				"GroupName": "0x4447_s3_drive_private",
+				"Policies": [
+					{
+						"PolicyName": "l_r_w_d_plus_rename",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": [
+										"s3:ListBucket",
+										"s3:GetObject",
+										"s3:PutObject",
+										"s3:DeleteObject",
+										"s3:GetObjectAcl",
+										"s3:GetObjectVersionAcl",
+										"s3:PutObjectAcl",
+										"s3:PutObjectVersionAcl"
+									],
+									"Resource": [
+										{
+											"Fn::Sub": "arn:aws:s3:::${S3DrivePrivate}"
+										},
+										{
+											"Fn::Sub": "arn:aws:s3:::${S3DrivePrivate}/*"
+										}
+									]
+								},
+								{
+									"Effect": "Allow",
+									"Action": "s3:ListAllMyBuckets",
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

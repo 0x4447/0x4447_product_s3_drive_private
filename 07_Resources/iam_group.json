@@ -2,28 +2,28 @@
 	"IAMGroup": {
 		"Type": "AWS::IAM::Group",
 		"Properties": {
-			"GroupName": "private_drive",
+			"GroupName": "0x4447_s3_drive_private",
 			"Policies": [
 				{
-					"PolicyName": "drive_access",
-					"PolicyDocument" : {
+					"PolicyName": "l_r_w_d_plus_rename",
+					"PolicyDocument": {
 						"Version": "2012-10-17",
 						"Statement": [
 							{
 								"Effect": "Allow",
 								"Action": [
-									"s3:PutObject",
-									"s3:GetObjectAcl",
-									"s3:GetObject",
-									"s3:PutObjectVersionAcl",
-									"s3:GetObjectVersionAcl",
 									"s3:ListBucket",
+									"s3:GetObject",
+									"s3:PutObject",
 									"s3:DeleteObject",
-									"s3:PutObjectAcl"
+									"s3:GetObjectAcl",
+									"s3:GetObjectVersionAcl",
+									"s3:PutObjectAcl",
+									"s3:PutObjectVersionAcl"
 								],
 								"Resource": [
-									{ "Fn::Sub": "arn:aws:s3:::${S3Drive}" },
-									{ "Fn::Sub": "arn:aws:s3:::${S3Drive}/*" }
+									{ "Fn::Sub": "arn:aws:s3:::${S3DrivePrivate}" },
+									{ "Fn::Sub": "arn:aws:s3:::${S3DrivePrivate}/*" }
 								]
 							},
 							{
