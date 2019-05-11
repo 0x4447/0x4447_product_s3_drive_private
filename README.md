@@ -38,7 +38,7 @@ grep -E "^DELETEMARKERS" | \
 awk '{FS = "[\t]+"; print "aws s3api delete-object --bucket BUCKET_NAME --key \42"$3"\42 --version-id "$5";"}' >> undelete_script.sh
 ```
 
-Once the CLI finishes working, you'll end up with the `undelete_script.sh` file, which will contain in each line a separated action to remove the `delete` flag from the S3 object. Make sure to review this file, and then set the it to be executable `chmod +x undelete_script.sh`.
+Once the CLI finishes working, you'll end up with the `undelete_script.sh` file, which will contain in each line a separated action to remove the `delete` flag from the S3 object. Make sure to review this file, and then set the it to be executable `chmod +x undelete_script.sh` and run it.
 
 # How to work with this project
 
