@@ -1,6 +1,6 @@
 # 💾 0x4447 S3 Private Drive
 
-This stack was created just speed up the process of creating a S3 bucket as a network storage with visioning configured, and a 30 day window to recover the deleted or older versions of the file. Since this is something we do over and over for our clients, we decided to describe the configuration once, and just within minutes be on our way.
+This stack was created just speed up the process of creating a S3 bucket as a network storage with versioning configured, and a 30 day window to recover the deleted or older versions of the file. Since this is something we do over and over for our clients, we decided to describe the configuration once, and just within minutes be on our way.
 
 The stack will also create a special IAM Group with a in-line policy that gives any user that is attach to this group the correct rights to interact with the S3 objects. This policy takes in account the enabled versioning, to make it all work.
 
