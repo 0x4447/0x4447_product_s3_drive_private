@@ -3,7 +3,7 @@
 	"Description": "This stack will create a S3 bucket that can be used as a network storage with object versioning to prevent any accidental data lose.",
 	"Parameters": {
 		"DataRestingPlace": {
-			"Description": "The S3 bucket name where you want to store your data.",
+			"Description": "The S3 bucket name where you want to store your data - the bucket will be created for you.",
 			"Type": "String"
 		}
 	},
@@ -29,6 +29,14 @@
 							"Id": "30days",
 							"NoncurrentVersionExpirationInDays": 30,
 							"Status": "Enabled"
+						},
+						{
+							"Id": "Intelligent transition",
+							"Status": "Enabled",
+							"Transition": {
+								"StorageClass": "INTELLIGENT_TIERING",
+								"TransitionInDays": 0
+							}
 						}
 					]
 				},

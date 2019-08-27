@@ -13,11 +13,21 @@
 				"Status": "Enabled"
 			},
 			"LifecycleConfiguration": {
-				"Rules": [{
-					"Id": "30days",
-					"NoncurrentVersionExpirationInDays": 30,
-					"Status": "Enabled"
-				}]
+				"Rules": [
+					{
+						"Id": "30days",
+						"NoncurrentVersionExpirationInDays": 30,
+						"Status": "Enabled"
+					},
+					{
+						"Id": "Intelligent transition",
+						"Status": "Enabled",
+						"Transition": {
+							"StorageClass": "INTELLIGENT_TIERING",
+							"TransitionInDays": 0
+						}
+					}
+				]
 			},
 			"Tags": [
 				{
